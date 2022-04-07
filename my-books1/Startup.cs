@@ -50,8 +50,6 @@ namespace my_books1
 
             //Configure the Services
             services.AddTransient<BooksService>();
-            
-            
             services.AddTransient<AuthorsService>();
             services.AddTransient<PublishersService>();
             
