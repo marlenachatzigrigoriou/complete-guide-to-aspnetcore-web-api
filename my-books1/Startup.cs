@@ -15,6 +15,7 @@ using Microsoft.OpenApi.Models;
 using my_books1.Data;
 using my_books1.Data.Models;
 using my_books1.Data.Services;
+using my_books1.Exceptions;
 //using my_books1.Exceptions;
 using System;
 using System.Collections.Generic;
@@ -50,9 +51,11 @@ namespace my_books1
             //Configure the Services
             services.AddTransient<BooksService>();
             
-            /*
+            
             services.AddTransient<AuthorsService>();
             services.AddTransient<PublishersService>();
+            
+            /*
             services.AddTransient<LogsService>();
 
             services.AddApiVersioning(config =>
@@ -124,8 +127,7 @@ namespace my_books1
             app.UseAuthorization();
 
             //Exception Handling
-            //app.ConfigureBuildInExceptionHandler(loggerFactory);
-            
+            app.ConfigureBuildInExceptionHandler();
             //app.ConfigureCustomExceptionHandler();
 
             app.UseEndpoints(endpoints =>
@@ -133,7 +135,7 @@ namespace my_books1
                 endpoints.MapControllers();
             });
 
-            AppDbInitializer.Seed(app);
+            //AppDbInitializer.Seed(app);
 
             //AppDbInitializer.SeedRoles(app).Wait();
         }
