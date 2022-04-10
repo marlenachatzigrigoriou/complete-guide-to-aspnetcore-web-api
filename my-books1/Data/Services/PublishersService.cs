@@ -15,7 +15,7 @@ namespace my_books1.Data.Services
             _context = context;
         }
 
-        public List<Publisher> GetAllPublishers(string sortBy, string searchString, int? pageNumber)
+        public List<Publisher> GetAllPublishers(string? sortBy, string? searchString, int? pageNumber)
         {
             var allPublishers = _context.Publishers.OrderBy(n => n.Name).ToList();
 

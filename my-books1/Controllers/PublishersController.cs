@@ -6,24 +6,28 @@ using my_books1.Exceptions;
 
 namespace my_books1.Controllers
 {
+
     [Route("api/[controller]")]
     [ApiController]
     public class PublishersController : ControllerBase
     {
 
         public PublishersService _publishersService;
+        private readonly ILogger<PublishersController> _logger;
 
-        public PublishersController(PublishersService publishersService)
+        public PublishersController(PublishersService publishersService, ILogger<PublishersController> logger)
         {
             _publishersService = publishersService;
+            _logger = logger;
         }
 
 
         [HttpGet("get-all-publishers")]
-        public IActionResult GetAllPublishers(string sortBy, string searchString, int pageNumber)
+        public IActionResult GetAllPublishers(string? sortBy, string? searchString, int pageNumber)
         {
             try
             {
+                _logger.LogInformation("This is just a log in GetAllPublishers().");
                 var _result = _publishersService.GetAllPublishers(sortBy, searchString, pageNumber);
                 return Ok(_result);
             }

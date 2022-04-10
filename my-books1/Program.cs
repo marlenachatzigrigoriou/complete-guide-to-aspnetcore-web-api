@@ -52,11 +52,13 @@ namespace my_books1 {
                 var configuration = new ConfigurationBuilder()
                     .AddJsonFile("appsettings.json")
                     .Build();
-                
-               /* Log.Logger = new LoggerConfiguration()
+
+                Log.Logger = new LoggerConfiguration()
                     .ReadFrom.Configuration(configuration)
                     .CreateLogger();
-*/
+
+                //Log.Logger = new LoggerConfiguration().CreateLogger();
+
                 //Log.Logger = new LoggerConfiguration()
                 //    .WriteTo.File("Logs/log.txt", rollingInterval: RollingInterval.Day)
                 //    .CreateLogger();
@@ -114,7 +116,7 @@ namespace my_books1 {
         */
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
-            //.UseSerilog()
+            .UseSerilog()
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();
