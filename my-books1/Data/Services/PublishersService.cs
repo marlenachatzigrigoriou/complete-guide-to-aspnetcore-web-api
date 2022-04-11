@@ -46,7 +46,7 @@ namespace my_books1.Data.Services
 
         public Publisher AddPublisher(PublisherVM publisher)
         {
-            if (StringStartsWithNumber(publisher.Name)) throw new PublisherNameException("Name starts with number ", publisher.Name);
+            if (StringStartsWithNumber(publisher.Name)) throw new PublisherNameException("Name starts with number", publisher.Name);
 
             var _publisher = new Publisher()
             {
